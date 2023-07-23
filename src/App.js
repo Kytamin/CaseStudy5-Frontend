@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Dashboard from "./components/pages/Dashboard";
+import UploadFiles from './components/addepisode/UploadManyFile';
+import UploadFile from './components/addcomic/UploadOneFile';
+import Navbar from './components/navbar/navbar';
+import ComicManager from './components/comicManager/comicManager';
+import Header from './components/pages/Header';
+import DetailComic from './components/pages/DetailComic';
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path={"/mainpage"} element={<Dashboard />} />
+        <Route path={'/addEpisode/:id'} element={<UploadFiles />} />
+        <Route path={'/addComic'} element={<UploadFile />} />
+        <Route path={'/home'} element={<Header />} />
+        <Route path={'/'} element={<Header />} />
+        <Route path={'/comicManager'} element={<ComicManager />} />
+        <Route path={'/detailComic/:id'} element={<DetailComic />} />
+      </Routes>
+    </>
   );
 }
 
